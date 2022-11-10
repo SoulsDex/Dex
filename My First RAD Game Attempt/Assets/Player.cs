@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
+
 {
+    float speed = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += speed * transform.forward *  Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position -= speed * transform.forward * Time.deltaTime;
+        }
+
+
     }
 }
