@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Fall : MonoBehaviour
 {
     Rigidbody ourRigidBody;
@@ -19,7 +20,7 @@ public class Fall : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            ourRigidBody.AddExplosionForce(500, transform.position + Vector3.down + Vector3.back, 2);
+            ourRigidBody.AddExplosionForce(500, transform.position + Vector3.down + 2* Vector3.back, 3);
         }
  
    
@@ -28,6 +29,13 @@ public class Fall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        GameObject objectHit = collision.gameObject;
+        Health objectHitHealth = objectHit.GetComponent<Health>();
+        if (objectHitHealth)
+        {
+            objectHitHealth.takeDamage(20);
+        }
+
         print("ouch");
     }
 
